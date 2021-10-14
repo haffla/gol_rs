@@ -52,8 +52,7 @@ impl Game {
 
     pub fn determine_new_state(&self, cell: bool, x: i64, y: i64) -> bool {
         match (cell, self.n_alive_neighbours_for(x, y)) {
-            (true, 2) => true,
-            (true, 3) => true,
+            (true, n_alive) if (2..=3).contains(&n_alive) => true,
             (false, 3) => true,
             _ => false,
         }
